@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Test Google Places</title>
+    
+    <link rel="shortcut icon" href="/Resources/Image/wave.ico" />
+    <link href="/Styles/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="/Scripts/GoogleAPI.js"></script>
+</head>
+<body>
+    <div><h1>Test Google Place</h1></div>
+    <div><input id="latitudeBox"></div>
+    <div><input id="longitudeBox"></div>
+    <div> <input id="getPlaces" class="n"
+       onclick="getPlaces(document.getElementById('latitudeBox').value, document.getElementById('longitudeBox').value)"
+       type="button" value="获取500米内的参观" /> </div>
+
+    <div>
+        <input id="getPlace" class="n"
+               onclick="getPlace(document.getElementById('latitudeBox').value, document.getElementById('longitudeBox').value)"
+               type="button" value="解析位置" />
+    </div>
+
+    <div id="location"></div>
+    <div id="surrounding"></div>
+
+</body>
+</html>

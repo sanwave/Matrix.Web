@@ -1,0 +1,47 @@
+﻿.topMenu_bg 
+{
+	background:#00B294;
+}
+.topMenu a:hover,.topMenu a.hover
+{
+	background: #007768;
+}
+a.noHover.hover,
+a.noHover:hover
+{
+    background:#00B294;
+}
+.navBox{
+    border-color:#00B294;
+}
+.filesBox
+{
+    float:left;
+    margin:25px 30px;
+    padding:20px 20px;
+    box-shadow:0px 0px 25px #F5A753;
+    border:#F5A753 solid 1px;
+    border-radius:5px;
+    width:520px;
+}
+.fileBox
+{
+    margin:20px 20px;
+    float:left;
+}
+.fileBox p,.fileLink
+{
+    white-space:normal;
+    word-wrap:break-word;
+    word-break:break-all;
+    float:left;
+    font-size:14px;
+}
+.fileLink
+{
+    margin:5px 0pz;
+}
+.fileLink a
+{
+    padding:1px 3px;
+}

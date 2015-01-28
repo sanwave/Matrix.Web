@@ -1,0 +1,50 @@
+﻿<div class="top">    
+    <script type="text/javascript" lang="ja" language="javascript">
+        $(document).ready(function () {
+            if ("undefined" != typeof (getCookie("usernameForMatrix")) &&
+                getCookie("usernameForMatrix") != "") {
+                $("#navUser").css("display", "block");
+                $("#navUserName").html("<a>" + getCookie("usernameForMatrix") + "</a>");
+            }
+            else {
+                $("#navLoginBox").css("display", "block");
+            }
+        });
+    </script>
+    <div class="topMenu_bg noSelect">
+        <div class="topMenu">
+            <div id="topMenu" class="ul">
+                <div id="navMatrix" class="navItem"><a class="noHover">Matrix</a></div>
+                <!--<div id="navHome" class="navItem"><a href="/Index.aspx">首页</a></div>-->
+                <div id="navMessage" class="navItem"><a href="/Message.aspx">白板</a></div>
+                <div id="navKod" class="navItem hidden"><a href="http://localhost:808">Kod</a></div>
+                <div id="navFind" class="navItem hidden"><a href="/Search.aspx">查找</a></div>
+                <div id="navDevelop" class="navItem hidden"><a href="/Develop.aspx">开发</a></div>
+                <div id="navDownload" class="navItem hidden"><a href="/Download.aspx">下载</a></div>
+                <div id="navFiles" class="navItem"><a href="/Cloud.aspx">私有云</a></div>
+                <div id="navCalendar" class="navItem hidden"><a href="/Calendar.aspx">日历</a></div>
+                <div id="navMusic" class="navItem hidden"><a href="/Music.aspx">音乐</a></div>
+                <div id="navVideo" class="navItem hidden"><a href="/Video.aspx">视频</a></div>
+                <div id="navTools" class="navItem"><a href="/Develop.aspx">工具</a></div>
+                <!--<div id="navEdit" class="navItem"><a href="http://skydrive.com">编辑</a></div>-->
+                <div id="navDemo" class="navItem"><a href="/Demo.aspx">Demo</a></div>
+                <div id="navAbout" class="navItem hidden"><a href="Recognize.aspx">Recognize</a></div>
+                <!--<div id="navAbout" class="navItem hidden"><a href="PlayVideo.aspx">关于</a></div>-->
+
+                <div id="navUser" class="hidden navItem">
+                    <div id="navUserName"></div>
+                    <div id="navUserBox" class="hidden navBox">
+                        <div id="navUserInfo" class="navBoxItem">用户信息</div>
+                        <div id="navUserLogOff" class="navBoxItem">注销</div>
+                    </div>
+                </div>
+
+                <div id="navLoginBox" class="hidden navItem">
+                    <a id="navRegister" href="/User/Register.aspx">注册</a>
+                    <a id="navComma" class="noHover">,</a>
+                    <a id="navLogin" href="/User/Login.aspx">登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

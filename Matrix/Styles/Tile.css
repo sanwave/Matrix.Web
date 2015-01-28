@@ -1,0 +1,53 @@
+.rightMain
+{
+    width:320px;
+    float:right;
+    margin:30px 10px 30px 20px;
+}
+.tile
+{
+    margin:50px 0px;
+}
+.tileTitle
+{
+    font-size:25px;
+    color:white;
+    background:#E2543E;
+    padding:50px 0px 20px 40px;
+}
+#introTitle
+{
+    background:#CD4900;/*0072C6;*/
+}
+#introBox
+{
+    border:#CD4900 solid 2px;
+}
+#noticeTitle
+{
+    background:yellowgreen;
+}
+#noticeBox
+{
+    border:yellowgreen solid 2px;
+}
+.tileContent
+{
+    font-size:15px;
+    padding:30px;
+    background:#F3F3F3;
+    border:#E2543E solid 3px;
+}
+.tileContent p
+{
+    text-indent:2em;
+    line-height:1.6;
+}
+#myTeamTitle
+{
+    background:#EE9A00;
+}
+#myTeamBox
+{
+    border:#EE9A00 solid 2px;
+}

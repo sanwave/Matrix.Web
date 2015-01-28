@@ -1,0 +1,81 @@
+﻿.topMenu_bg 
+{
+	background:#EB3B00;
+}
+.topMenu a:hover,.topMenu a.hover
+{
+	background: #C51F00;
+}
+a.noHover.hover,
+a.noHover:hover
+{
+    background:#EB3B00;
+}
+.musicMain
+{
+    width:430px;
+    margin:10px 20px 50px 20px;
+    float:left;
+}
+.musicTitle
+{
+    padding:15px 0px 25px 0px;
+}
+.infoComposer
+{
+    color:grey;
+    padding:0px 4px;
+    font-size:15px;
+}
+.lyricBox{
+    width:430px;
+    text-align:center;
+}
+.lyricBox img
+{
+    max-width:430px;
+    max-height:430px;
+    height:auto;
+    margin:0px auto;
+}
+.music
+{
+    margin-top:5px;
+    height:40px;
+    width:430px;
+}
+.musicTile
+{
+    width:300px;
+    float:left;
+    margin-top:140px;
+}
+.musicTile p
+{
+    text-indent:2em;
+    font-size:13px;
+}
+.commentBox{
+    background:#E3E3E3;
+    padding:15px 10px 5px 15px;
+    margin:80px 0px 30px 0px;
+}
+.commentBoxTitle{
+    float:left;
+    font-size:15px;
+}
+.wordRestrain{
+    float:right;
+}
+.commentRestrain{
+    position:relative;
+}
+#commentBox{
+    width:393px;
+    height:70px;
+    margin-top:3px;
+}
+.commentBoxButton{
+    padding:3px 19px;
+    font-size:13px;
+}

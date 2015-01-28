@@ -1,0 +1,58 @@
+﻿.topMenu_bg 
+{
+	background:#8C0095;
+}
+.topMenu a:hover,.topMenu a.hover
+{
+	background: #68217A;
+}
+a.noHover.hover,
+a.noHover:hover
+{
+    background:#8C0095;
+}
+.navBox{
+    border-color:#8C0095;
+}
+.developMain
+{
+    width:594px;
+    float:left;
+    margin:10px 0px 50px 20px;
+}
+.developTop
+{
+    position:relative;
+    width:594px;
+    height:85px;
+}
+.codeBox_bg
+{
+    width:850px;
+    margin-top:10px;
+}
+#codeBox
+{
+    height:450px;
+    width:850px;
+    font-family:'Courier New';
+    font-size:13px;
+}
+.resultsBox
+{
+    width:594px;
+}
+
+
+.rightMain
+{
+    width:230px;
+}
+#tipsTitle
+{
+    background:#A500AC;
+}
+#tipsBox
+{
+    border:#A500AC solid 2px;
+}

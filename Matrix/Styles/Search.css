@@ -1,0 +1,90 @@
+.topMenu_bg 
+{
+	background:#E23200;
+}
+.topMenu a:hover,.topMenu a.hover
+{
+	background: #C51F00;
+}
+a.noHover.hover,
+a.noHover:hover
+{
+    background:#E23200;
+}
+.navBox{
+    border-color:#E23200;
+}
+.searchMain
+{
+    min-height:400px;    
+    padding:60px 20px;
+}
+#searchBox
+{
+    width:800px;
+    min-width:600px;    
+    margin:20px 0px;
+    white-space:nowrap;
+}
+.searchTitle
+{
+    margin:20px 0px;
+}
+.searchBar
+{
+    position:relative;
+    width:600px;
+    border:1px solid #CCC;
+    margin-top:15px;
+    height:31px;
+}
+#inputSearch
+{
+    position:absolute;
+    left:0px;
+    width:560px;
+    border:0 none;
+    padding:5px 32px 5px 8px;
+}
+#searchIcon
+{
+    position:absolute;
+    right:5px;
+    margin:7px 0px;
+}
+#searchForm
+{
+}
+.searchResults_bg
+{
+    margin:0px 20px;
+}
+.searchresult
+{
+    margin:15px 0px;
+    width:580px;
+}
+.resultmodelname
+{
+    font-size:18px;
+    margin:26px 0px 0px 0px;
+    color:#094AB2;
+}
+.resultcategory
+{
+    font-size:13px;
+    margin:0px;
+    color:Green;
+    margin-bottom:3px;
+}
+.resultdescription
+{
+    font-size:13px;
+    margin:0px;
+}
+.resultlabel
+{
+    color:Gray;
+    font-size:13px;
+    margin-top:10px;
+}

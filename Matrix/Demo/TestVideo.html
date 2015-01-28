@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Matrix Home Page</title>
+    <link href="/Styles/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Styles/Video.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Scripts/jquery-2.0.3.min.js"></script>
+    <!--<script type="text/javascript" src="/jwplayer/jwplayer.js"></script>-->
+
+    <link href="/videojs/video-js.min.css" rel="stylesheet" type="text/css">
+    <script src="/videojs/Resource.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //flowplayer("player", "/flowplayer/flowplayer.commercial.swf");
+            //videojs.options.flash.swf = "/videojs/video-js.swf";
+            /*jwplayer("videoBox").setup({
+                flashplayer:"/jwplayer/player.swf",
+                file: "/Films/161452237.h264_98.f4v",
+                plugins:{ 
+                    sharing:{ 
+                        onpause: false, 
+                        oncomplete: false 
+                    } 
+                },
+                image: "/uploads/myPoster.jpg"               
+            });*/
+        });
+    </script>
+
+</head>
+<body>
+    <div class="videoMain">
+        <div class="leftBox">
+            <div class="videoTitle">仙剑奇侠传四</div>
+        </div>
+
+        <div id="videoBox" class="videoBox">
+            <object id="player" data="/Films/161452237.h264_98.f4v"
+                    classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+                <embed class="videoBig" src="/jwplayer/player.swf"
+                       flashvars="file=/Films/仙剑奇侠传/仙剑五剧情梗概.f4v&image=/Films/仙剑奇侠传/仙剑五Cover.jpg" />
+            </object>
+        </div>
+
+        <!--<div id="videoBox" class="videoBox">
+            <object id="player" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+                    codebase="/jwplayer/swflash.cab#version=6,0,40,0"
+                    width="720" height="480">
+                <param name="name" value="player">
+                <param name="allowfullscreen" value="true">
+                <param name="allowscriptaccess" value="always">
+                <param name="flashvars" value="file=/Films/仙剑奇侠传/98357950.h264_98.f4v&image=preview.jpg">
+                <param name="src" value="/jwplayer/player.swf">
+                <embed id="player" type="application/x-shockwave-flash"
+                       src="/jwplayer/player.swf" flashvars="file=/Films/仙剑奇侠传/牵绊MV.f4v&image=/Films/Impression1.jpg"
+                       allowscriptaccess="always" allowfullscreen="true" name="player" width="720" height="480">
+            </object>
+        </div>
+        <div id="videoBox" class="videoBox">
+            <object id="player" data="/Films/161452237.h264_98.f4v" width="720" height="480">
+                <param name="flashvars" value="file=/Films/仙剑奇侠传/162848564.h264_98.f4v&image=/Films/Impression3.jpg">
+                <param name="src" value="/jwplayer/player.swf">
+                <embed src="/jwplayer/player.swf" flashvars="file=/Films/仙剑奇侠传/有情燕MV.f4v&image=/Films/Impression2.jpg" width="720" height="480" />
+            </object>
+        </div>
+        <div id="videoBox" class="videoBox">
+            <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="720" height="480"
+                   poster="http://video-js.zencoder.com/oceans-clip.png" data-setup="{}">
+                <source src="file=http://myanimesource.de/vid/video.mkv" type='video/webm' />
+                <source src="/Films/仙剑奇侠传/98357950.h264_98.f4v" />
+                <source src="/Films/仙剑奇侠传/152859496.h264_2.mp4" type="video/mp4" />
+                <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+                <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+
+            </video>
+
+
+            <video class="videoBig" controls>
+        <source src="/Films/仙剑奇侠传/98357950.h264_98.f4v" type="video/mp4" />
+        <source src="/Films/仙剑奇侠传/152859496.h264_2.mp4" type="video/mp4" />-->
+            <!--<object data="/Films/161452237.h264_98.f4v">
+                <embed src="/jwplayer/player.swf" />
+            </object>
+            <object id="player" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+                    codebase="/jwplayer/swflash.cab#version=6,0,40,0"
+                    width="480" height="296">
+                <param name="name" value="player">
+                <param name="allowfullscreen" value="true">
+                <param name="allowscriptaccess" value="always">
+                <param name="flashvars" value="file=/Films/仙剑奇侠传/98357950.h264_98.f4v&image=preview.jpg">
+                <param name="src" value="/jwplayer/player.swf">
+                <embed id="player" type="application/x-shockwave-flash"
+                    src="/jwplayer/player.swf" flashvars="file=/Films/仙剑奇侠传/98357950.h264_98.f4v&image=preview.jpg"
+                    allowscriptaccess="always" allowfullscreen="true" name="player" width="480" height="296">
+            </object>
+
+            <object data="/Films/仙剑奇侠传/98357950.h264_98.f4v" />
+        </video>-->
+        </div>
+    </div>
+</body>
+</html>

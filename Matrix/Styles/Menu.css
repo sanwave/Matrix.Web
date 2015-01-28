@@ -1,0 +1,103 @@
+﻿.topMenu_bg 
+{
+	background:#0072C6;
+	height:32px;
+}
+.topMenu
+{
+	width:900px;
+	margin:auto;
+}
+.navItem
+{
+	float: left;
+}
+#navUser,
+#navLoginBox{
+    float:right;
+}
+#navLoginBox a
+{
+    float:left;
+}
+.topMenu a,
+.topMenu a:hover,
+.topMenu a.hover
+{
+	color:#FFF;
+	display:block;
+	font-size:15.2px;
+	padding:1px 24px 0px 23px;
+	line-height:31px;
+}
+#navComma{
+    padding:1px 2px 0px 1px;
+}
+#navRegister{
+    padding-right:5px;
+}
+#navLogin{
+    padding-left:5px;
+}
+.topMenu a:hover,.topMenu a.hover
+{
+	background: #005DA2;
+}
+a.noHover:hover,a.noHover.hover
+{
+    background:#0072C6;
+}
+.navBox{
+    border:#0072C6 2px solid;
+    border-top:none;
+    padding-top:3px;
+}
+.navBoxItem{
+    line-height:30px;
+    height:30px;
+    cursor:pointer;
+    font-size:15px;
+}
+.navBoxItem.hover,
+.navBoxItem:hover{
+    background:#E7E7E7;
+}
+
+
+
+
+
+.leftMenu
+{
+	margin:30px 10px;
+	float:left;
+	width:200px;
+}
+.leftMenuSubTitle
+{
+    font-size:15px;
+	padding:7px 9px 5px 10px;
+	background:#F5A753;
+	color:White;
+	font-weight:bold;
+	border-radius:2px;
+}
+.leftMenuSubBox
+{
+	display:block;
+	padding:5px;
+	border:1px solid #E7E7E7;
+	border-radius:2px;
+	margin-bottom:10px;
+}
+.leftMenuSubBox .li
+{
+	padding:5px 22px;
+	font-size:14px;
+	cursor:pointer;
+	border-radius:2px;
+}
+.leftMenuSubBox .li:hover
+{	
+	background:#E7E7E7;
+}
