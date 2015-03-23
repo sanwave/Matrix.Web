@@ -43,7 +43,7 @@ namespace Matrix.Bussiness
         public void GetUserInfo()
         {
             MariaDBHelper.ExecuteReader(
-                "call GetUserByUsername",
+                "GetUserByUsername",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
@@ -68,7 +68,7 @@ namespace Matrix.Bussiness
         {
             string salt = string.Empty, passwordHash = string.Empty;
             MariaDBHelper.ExecuteReader(
-                "call GetUserByUsername",
+                "GetUserByUsername",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
@@ -88,7 +88,7 @@ namespace Matrix.Bussiness
             else if (MariaDBHelper.GetHashCode(m_password + salt) == passwordHash)
             {
                 object loginId = MariaDBHelper.ExecuteScalar(
-                    "call LoginUser",
+                    "LoginUser",
                     CommandType.StoredProcedure,
                     new MySqlParameter("Ticket", m_ticket),
                     new MySqlParameter("UserName", m_username),
@@ -108,7 +108,7 @@ namespace Matrix.Bussiness
             int loginStatus = 0;
             int uid = 0;// new Weibo(code).Login();
             MariaDBHelper.ExecuteReader(
-                "call GetUserByWeibo",
+                "GetUserByWeibo",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {

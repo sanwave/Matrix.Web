@@ -17,7 +17,7 @@ namespace Matrix.Bussiness
         public CommentEntity(int id)
         {
             MariaDBHelper.ExecuteReader(
-                "call GetCommentByID",
+                "GetCommentByID",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
@@ -46,7 +46,7 @@ namespace Matrix.Bussiness
             List<int> list = new List<int>();
 
             MariaDBHelper.ExecuteReader(
-                "call GetCommentsByResourceID",
+                "GetCommentsByResourceID",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
@@ -63,7 +63,7 @@ namespace Matrix.Bussiness
         public static int GetCount()
         {
             object count = MariaDBHelper.ExecuteScalar(
-                "call GetCommentsCount",
+                "GetCommentsCount",
                 CommandType.StoredProcedure);
             return Convert.ToInt32(count);
         }
@@ -71,7 +71,7 @@ namespace Matrix.Bussiness
         public int Post()
         {
             object id = MariaDBHelper.ExecuteScalar(
-                "call PostComment",
+                "PostComment",
                 CommandType.StoredProcedure,
                 new MySqlParameter("ResourceID", m_resourceId),
                 new MySqlParameter("Content", m_content),
@@ -85,7 +85,7 @@ namespace Matrix.Bussiness
         public int Reply(CommentEntity cmt)
         {
             return MariaDBHelper.ExecuteNonQuery(
-                "call ReplyCommentById",
+                "ReplyCommentById",
                 CommandType.StoredProcedure,
                 new MySqlParameter("SourceId", cmt.m_id),
                 new MySqlParameter("Content", m_content),

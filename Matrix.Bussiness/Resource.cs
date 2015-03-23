@@ -18,7 +18,7 @@ namespace Matrix.Bussiness
         public ResourceEntity(int id)
         {
             MariaDBHelper.ExecuteReader(
-                "call GetResourceById",
+                "GetResourceById",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
@@ -43,7 +43,7 @@ namespace Matrix.Bussiness
         {
             List<int> children = new List<int>();
             MariaDBHelper.ExecuteReader(
-                "call GetResourceChildren",
+                "GetResourceChildren",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
@@ -60,7 +60,7 @@ namespace Matrix.Bussiness
         public int Add()
         {
             return MariaDBHelper.ExecuteNonQuery(
-                "call AddResource",
+                "AddResource",
                 CommandType.StoredProcedure,
                 new MySqlParameter("Parent", m_parentFolder),
                 new MySqlParameter("Name", m_name),
@@ -82,7 +82,7 @@ namespace Matrix.Bussiness
                 File.Delete(path);
             }
             return MariaDBHelper.ExecuteNonQuery(
-                "call RemoveResource",
+                "RemoveResource",
                 CommandType.StoredProcedure,
                 new MySqlParameter("@ResourceId", m_id)
                 );
