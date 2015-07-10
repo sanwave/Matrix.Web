@@ -33,9 +33,9 @@
                         <input type="checkbox" value="true" tabindex="4"/> 
                         <h5>使我保持登录状态</h5>
                     </div>
-                    <div class="commitBox">
+                    <div class="commitBox" style="text-align:left">
                         <div><input id="commitLoginUser" type="button" value="提交" tabindex="3" /></div>
-                        <div><a href="/Handler.ashx?RequestType=LoginByWeibo">从微博登录</a></div>
+                        <!--<div><a href="/Handler.ashx?RequestType=LoginByWeibo">从微博登录</a></div>-->
                     </div>             
                 </div>
 		    </div>

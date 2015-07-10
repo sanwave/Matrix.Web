@@ -84,7 +84,7 @@ function loadVideoItem() {
 
             videoBoxHtml =
                 "<video id=\"player\" controls autoplay>" +
-                    "<source src=\"" + data.Url + "\" type=\"video/mp4\""+
+                    "<source src=\"" + data.Url + "\" type=\"video/mp4\" />"+
                 "</video>";
             
             $("#videoTitle").text(data.Name);

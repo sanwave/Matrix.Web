@@ -35,7 +35,8 @@ div.leftBox
     width:10%;
     min-width:60px;
     float:left;
-    -ms-writing-mode:tb-rl;
+    writing-mode:tb-rl;
+    word-break:break-all;
     height:80%;
     min-height:600px;
     /*border:red solid 3px;*/

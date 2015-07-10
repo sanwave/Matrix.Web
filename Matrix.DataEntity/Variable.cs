@@ -60,7 +60,7 @@ namespace Matrix.DataEntity
 
             public static class WebSite
             {
-                public static bool canRegister = true;
+                public static bool canRegister = false;
                 public static bool canLogin = true;
                 public static bool canUploadFile = true;
                 public static bool canManageResource = true;

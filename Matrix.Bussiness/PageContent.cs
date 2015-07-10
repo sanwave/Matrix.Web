@@ -151,7 +151,7 @@ namespace Matrix.Bussiness
                 element.Add("Url", Variable.Default.cloudPath + resource.m_uri);
                 element.Add("Format", resource.m_format);
                 element.Add("Composer", resource.m_composer);
-                element.Add("Cover", resource.m_cover);
+                element.Add("Cover", Variable.Default.cloudPath + resource.m_cover);
                 element.Add("Description", resource.m_description);
                 return jss.Serialize(element);
             }            
