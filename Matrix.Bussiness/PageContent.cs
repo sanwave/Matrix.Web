@@ -11,69 +11,37 @@ namespace Matrix.Bussiness
     public class PageContent
     {
         JavaScriptSerializer jss = new JavaScriptSerializer();
-        
+
         public string BuildMessages()
         {
             Dictionary<string, string> element = new Dictionary<string, string>();
             Dictionary<string, Dictionary<string, string>> elements = new Dictionary<string, Dictionary<string, string>>();
-            List<int> messageIDs = MessageEntity.GetListByPage();
-            
+            //List<int> messageIDs = MessageEntity.GetMsgIdsByPage();
+
             element = new Dictionary<string, string>();
-            element.Add("id", "0");
+            element.Add("id", "-1");
             element.Add("count", MessageEntity.GetCount().ToString());
-            elements.Add("message", element);
-            
-            foreach (int messageID in messageIDs)
+            elements.Add("-1", element);
+
+            List<Model.Message> msgs;
+            MessageEntity.GetMsgListByPage(-1, out msgs);
+
+            foreach (Model.Message msg in msgs)
             {
-                int mid = messageID;
-                while (mid > 0)
-                {
-                    MessageEntity msg = new MessageEntity(mid);
-                    element = new Dictionary<string, string>();
-                    element.Add("id", msg.m_id.ToString());
-                    element.Add("composer", msg.m_composer);
-                    element.Add("content", msg.m_content);
-                    element.Add("postTime", msg.m_postTime.ToString());
-                    element.Add("support", msg.m_support.ToString());
-                    element.Add("oppose", msg.m_oppose.ToString());
-                    element.Add("replyNum", msg.m_replyNum.ToString());
-                    element.Add("report", msg.m_report.ToString());
-                    element.Add("replyMsgID", msg.m_replyMsgID.ToString());
-                    element.Add("replyDepth", msg.m_replyDepth.ToString());
-                    element.Add("replyedDepth", msg.m_replyedDepth.ToString());
-                    elements.Add(Guid.NewGuid().ToString(), element);
-                    mid = msg.m_replyMsgID;
-                }
+                element = new Dictionary<string, string>();
+                element.Add("id", msg.m_id.ToString());
+                string composer = msg.m_composer.Length == 0 ? Variable.Default.anonymousUserName : msg.m_composer;
+                element.Add("composer", composer);
+                element.Add("content", msg.m_content);
+                element.Add("postTime", msg.m_postTime.ToString());
+                element.Add("support", msg.m_support.ToString());
+                element.Add("oppose", msg.m_oppose.ToString());
+                element.Add("replyNum", msg.m_replyNum.ToString());
+                element.Add("report", msg.m_report.ToString());
+                element.Add("replyMsgID", msg.m_replyMsgID.ToString());
+                elements.Add(msg.m_id.ToString(), element);
             }
 
-            /*var json = new Weibo().GetFriendsTimeLine(100);
-            if (json.IsDefined("statuses"))
-            {
-                foreach (var status in json.statuses)
-                {
-                    //不知道干什么用
-                    if (!status.IsDefined("user"))
-                        continue;
-
-                    element = new Dictionary<string, string>();
-                    element.Add("id", status.id.ToString());
-                    element.Add("composer", status.user.screen_name);
-                    element.Add("content", status.text);
-                    element.Add("postTime", Weibo.TransDate(status.created_at).ToString("yyyy-MM-dd HH:mm:ss"));
-                    element.Add("support", "0");
-                    element.Add("oppose", "0");
-                    element.Add("replyNum", status.comments_count);
-                    element.Add("report", "0");
-                    element.Add("thumbnail_pic", status.IsDefined("thumbnail_pic") ? status.thumbnail_pic : "");
-                    element.Add("bmiddle_pic", status.IsDefined("bmiddle_pic") ? status.bmiddle_pic : "");
-                    element.Add("original_pic", status.IsDefined("original_pic") ? status.original_pic : "");
-                    element.Add("replyMsgID", "0");
-                    element.Add("replyDepth", "0");
-                    element.Add("replyedDepth", "0");
-                    elements.Add(Guid.NewGuid().ToString(), element);
-
-                }
-            }*/        
             return jss.Serialize(elements);
         }
 

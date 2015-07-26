@@ -33,8 +33,6 @@ namespace Matrix.Bussiness
                         m_replyNum = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyNum"));
                         m_report = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Report"));
                         m_replyMsgID = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyMsgID"));
-                        m_replyDepth = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyDepth"));
-                        m_replyedDepth = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyedDepth"));
                     }
                 },
                 new MySqlParameter("@Id", id)

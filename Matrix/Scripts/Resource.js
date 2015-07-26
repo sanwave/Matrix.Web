@@ -209,7 +209,7 @@ function showReplyCmtBox(obj, n) {
     $("#replyBox_bg").remove();
     $(obj).parent().parent().append(replyBoxHtml);
     $("#replyBox").focus();
-    $("#replyBox").val("回复@无名:");
+    //$("#replyBox").val("回复@无名:");
 }
 
 function commitReplyComment(n) {

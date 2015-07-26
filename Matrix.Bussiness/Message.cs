@@ -15,46 +15,33 @@ namespace Matrix.Bussiness
     {
         public MessageEntity() { }
 
-        public MessageEntity(long id)
+        public static void GetMsgListByPage(int page, out List<Message> msgs)
         {
+            List<Message> buff = new List<Message>();            
             MariaDBHelper.ExecuteReader(
-                "GetMessageById",
-                CommandType.StoredProcedure,
-                (MySqlDataReader dataReader) =>
-                {
-                    if (dataReader.Read())
-                    {
-                        m_id = Convert.ToInt64(MariaDBHelper.GetData(dataReader, "Id"));
-                        m_composer = MariaDBHelper.GetData(dataReader, "Composer");
-                        m_content = MariaDBHelper.GetData(dataReader, "Content");
-                        m_postTime = Convert.ToDateTime(MariaDBHelper.GetData(dataReader, "PostTime"));
-                        m_support = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Support"));
-                        m_oppose = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Oppose"));
-                        m_replyNum = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyNum"));
-                        m_report = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Report"));
-                        m_replyMsgID = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyMsgID"));
-                        m_replyDepth = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyDepth"));
-                        m_replyedDepth = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyedDepth"));
-                    }
-                },
-                new MySqlParameter("@Id", id)
-            );
-        }
-
-        public static List<int> GetListByPage(){
-            List<int> list = new List<int>();
-            MariaDBHelper.ExecuteReader(
-                "GetMessageIDsByPage",
+                "GetMessageByPage",
                 CommandType.StoredProcedure,
                 (MySqlDataReader dataReader) =>
                 {
                     while (dataReader.Read())
                     {
-                        list.Add(Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Id")));
+                        long id = Convert.ToInt64(MariaDBHelper.GetData(dataReader, "Id"));
+                        string composer = MariaDBHelper.GetData(dataReader, "Composer");
+                        string content = MariaDBHelper.GetData(dataReader, "Content");
+                        DateTime post_time = Convert.ToDateTime(MariaDBHelper.GetData(dataReader, "PostTime"));
+                        int support = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Support"));
+                        int oppose = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Oppose"));
+                        int reply_num = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyNum"));
+                        int report = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "Report"));
+                        long reply_msgid = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "ReplyMsgID"));
+
+                        buff.Add(new Message(id, composer, content, post_time, support, oppose, reply_num, report, reply_msgid));
                     }
-                }
+                },
+                new MySqlParameter("@Page", page)
             );
-            return list;
+
+            msgs = new List<Message>(buff.ToArray());
         }
 
         public static int GetCount()
@@ -74,9 +61,7 @@ namespace Matrix.Bussiness
                 new MySqlParameter("PostIP", m_postIP),
                 new MySqlParameter("PostTime", m_postTime)
                 );
-
-            //new Weibo().Post(m_content);
-
+            
             return Convert.ToInt32(id);
         }
 

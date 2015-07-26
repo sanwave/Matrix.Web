@@ -23,7 +23,7 @@ namespace Matrix
             context.Response.ContentType = "text/plain";
             Dictionary<string, string> result = new Dictionary<string, string>();
             JavaScriptSerializer jss = new JavaScriptSerializer();
-            
+
             string currentUsername = context.User.Identity.Name;
             string requestType = SqlHelper.GetString(context.Request["RequestType"]);
             string content = SqlHelper.GetString(context.Request["Content"]);
@@ -358,11 +358,10 @@ namespace Matrix
                     if (Variable.State.WebSite.canLogin &&
                         loginStatus > 0)
                     {
-                        //context.Response.Cookies["Ticket"].Value = strTicket;
                         result.Add("result", "success");
                         HttpCookie userCookie = UserIdentityRegister(loginUsername, "");
                         context.Response.Cookies.Add(userCookie);
-                        context.Request.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now.AddMonths(1);
+                        context.Request.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now.AddMonths(3);
                     }
                     else
                     {

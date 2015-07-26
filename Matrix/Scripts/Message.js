@@ -2,7 +2,6 @@
 
 function loadMessage(pageNum) {
     $("#messageBox").focus();
-    var message = "", messages = "";
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -12,57 +11,80 @@ function loadMessage(pageNum) {
             Page: pageNum
         },
         success: function (data) {
-            var header = "",message="",messages="";
-            var replyDepth = 0, replyMsgID = "0";
-            var floor = 1000;
-            var picBox = "";
+            var messages = "";
+            var floor = data["-1"].count;
+            var id_list = new Array(floor + 1);
+            var j = 0;
             $.each(data, function (i) {
-                if (data[i].id == "0") {
-                    $("#msgCount").html(data[i].count);
-                    floor = data[i].count;
+                id_list[j++] = data[i].id;
+            });            
+            id_list.sort(down);
+            for (var i = 0; i < id_list.length ; ++i) {
+                if (id_list[i] > 0) {
+                    messages +=
+                        "<div class=\"messageBlock\">" +
+                            "<div class=\"storyBlock\">" + floor-- + "&nbsp;楼</div>" +
+                            get_msgstory_by_id(data, id_list[i]) +
+                        "</div>";
                 }
-                else {
-                    if (message != "")
-                        message = "<div class=\"subMessage\">" + message + "</div>";
-                    message += "<div class=\"msgComposer noSelect\"><a>" + data[i].composer + "</a></div>";
-
-                    if (data[i].bmiddle_pic != null && data[i].bmiddle_pic != "")
-                        picBox = "<img onclick='changeAttachImageWidth(this)' src='" + data[i].bmiddle_pic + "' style='width: 32%;'>";
-                    else
-                        picBox = "";
-
-                    message += "<div class=\"msgContent\"><p>" + data[i].content.replace(/\n/g, "<br>") + "</p>" + picBox + "</div>";
-                    message += "<div class=\"msgReact noSelect\">";
-                    message += "<div class=\"msgPostTime\">" + data[i].postTime + "</div>";
-                    message += "<div class=\"msgButton\" onclick=\"reactMessage(this,'support'," +
-                        data[i].id + ")\">支持(<e>" + data[i].support + "</e>)</div>";
-                    message += "<div class=\"msgButton\" onclick=\"reactMessage(this,'oppose'," +
-                        data[i].id + ")\">反对(<e>" + data[i].oppose + "</e>)</div>";
-
-                    message += "<div class=\"msgButton\" onclick=\"removeMessage(this," +
-                        data[i].id + ")\">移除</div>";
-
-                    message += "<div class=\"msgButton showReplyButton\" onclick=\"showReplyMsgBox(this, " +
-                        data[i].id + ")\"\">评论(<e>" + data[i].replyNum + "</e>)</div>";
-                    message += "<div class=\"msgButton\" onclick=\"reactMessage(this,'report'," +
-                        data[i].id + ")\">举报(<e>" + data[i].report + "</e>)</div>";
-                    message += "</div>";
-                    message += "<div class=\"clearBoth\"></div>";
-                    //message += "</div>";
-                    if (data[i].replyMsgID == "0") {
-                        messages +=
-                            "<div class=\"messageBlock\">" +
-                                "<div class=\"storyBlock\">" + floor-- + "&nbsp;楼</div>" +
-                                "<div class=\"storyContent\">" + message + "</div>" +
-                            "</div>";
-                        message = "";
-                    }
-                }
-            });
-            
+            }
+            $("#msgCount").html(floor);
             $("#messagesBox").html(messages);
         }
     });
+}
+
+function down(a, b) {
+    return (a - b < 0) ? 1 : -1;
+}
+
+function make_msgblock_html(item) {
+    var buff = "", picBox = "";
+
+    buff = "<div class=\"msgComposer noSelect\"><a>" + item.composer + "</a></div>";
+
+    if (item.bmiddle_pic != null && item.bmiddle_pic != "")
+        picBox = "<img onclick='changeAttachImageWidth(this)' src='" + item.bmiddle_pic + "' style='width: 32%;'>";
+    else
+        picBox = "";
+
+    buff += "<div class=\"msgContent\"><p>" + item.content.replace(/\n/g, "<br>") + "</p>" + picBox + "</div>";
+    buff += "<div class=\"msgReact noSelect\">";
+    buff += "<div class=\"msgPostTime\">" + item.postTime + "</div>";
+    buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'support'," +
+        item.id + ")\">支持(<e>" + item.support + "</e>)</div>";
+    buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'oppose'," +
+        item.id + ")\">反对(<e>" + item.oppose + "</e>)</div>";
+
+    buff += "<div class=\"msgButton\" onclick=\"removeMessage(this," +
+        item.id + ")\">移除</div>";
+
+    buff += "<div class=\"msgButton showReplyButton\" onclick=\"showReplyMsgBox(this, " +
+        item.id + ")\"\">评论(<e>" + item.replyNum + "</e>)</div>";
+    buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'report'," +
+        item.id + ")\">举报(<e>" + item.report + "</e>)</div>";
+    buff += "</div>";
+    buff += "<div class=\"clearBoth\"></div>";
+    return buff;
+}
+
+function get_msgstory_by_id(json, id)
+{
+    var header = "", message = "";
+    var msg_id = id;
+    var item;
+    while (msg_id != 0) {
+        item = json[msg_id];
+        if (msg_id == id) {
+            header = "<div class=\"storyContent\">";
+        }
+        else {
+            header += "<div class=\"subMessage\">";
+        }
+        message = make_msgblock_html(item) + "</div>" + message;
+        msg_id = item.replyMsgID;
+    }
+    return header + message;
 }
 
 function loadMsgTile() {
