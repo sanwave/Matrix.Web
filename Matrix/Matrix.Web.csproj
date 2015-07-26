@@ -73,6 +73,7 @@
     <Content Include="Download.aspx" />
     <Content Include="Foot.html" />
     <Content Include="Global.asax" />
+    <Content Include="Google.html" />
     <Content Include="Header.html" />
     <Content Include="Message.aspx" />
     <Content Include="Picture.aspx" />
