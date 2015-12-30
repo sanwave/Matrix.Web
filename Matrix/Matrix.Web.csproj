@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +93,7 @@
     <Content Include="Scripts\Resource.js" />
     <Content Include="Scripts\Search.js" />
     <Content Include="Scripts\User.js" />
+    <Content Include="Scripts\Zentao.js" />
     <Content Include="Search.aspx" />
     <Content Include="Styles\Cloud.css" />
     <Content Include="Styles\Common.css" />
@@ -105,12 +107,14 @@
     <Content Include="Styles\Tile.css" />
     <Content Include="Styles\User.css" />
     <Content Include="Styles\Video.css" />
+    <Content Include="Styles\Zentao.css" />
     <Content Include="User\Login.aspx" />
     <Content Include="User\LogOff.aspx" />
     <Content Include="User\Register.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="zentao_diary.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calendar.aspx.cs">
@@ -236,6 +240,16 @@
     <Compile Include="User\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Zentao.ashx.cs">
+      <DependentUpon>Zentao.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="zentao_diary.aspx.cs">
+      <DependentUpon>zentao_diary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="zentao_diary.aspx.designer.cs">
+      <DependentUpon>zentao_diary.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Handler.ashx" />
@@ -251,6 +265,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Zentao.ashx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Matrix.Bussiness\Matrix.Bussiness.csproj">
