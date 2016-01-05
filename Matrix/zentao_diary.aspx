@@ -12,12 +12,14 @@
     <script type="text/javascript" src="/Scripts/Zentao.js"></script>    
 </head>
 <body>
-    <form id="fromDiary">
-    <div id="diaryContainer">
-        <div class="itemContainer">
+    <div class="container">
+      <div class="captain">提交日报</div>
+      <form id="fromDiary">
+        <div id="diaryContainer">
+          <div class="itemContainer">
             <div class="labelContainer">部门</div>
             <div>
-              <select id="selectDepartment" style="width:370px;display:block">
+              <select id="selectDepartment">
                 <option value='Development'>开发部</option>
                 <option value='Platform Development'>开发部/平台开发部</option>
                 <option value='Video Development' selected='selected'>开发部/视频开发部</option>
@@ -38,11 +40,11 @@
                 <option value='composite Manage'>综合管理部</option>
                 <option value='market'>市场推广部</option>
               </select></div>
-        </div>
-        <div class="itemContainer">
+          </div>
+          <div class="itemContainer">
             <div class="labelContainer">工作类别</div>
             <div>
-              <select id="selectWorkType" style="width:370px;display:block">
+              <select id="selectWorkType">
                 <option value='test'>测试</option>
                 <option value='thing' selected="selected">事务</option>
                 <option value='bug'>修改问题</option>
@@ -67,9 +69,9 @@
 
             </div>
         </div>
-        <div class="itemContainer">
+          <div class="itemContainer">
             <div class="labelContainer">项目</div>
-            <div><select id="selectProject" style="width:370px;display:block">
+            <div><select id="selectProject">
               <option value='4'>湖北省网（楚天网络）项目</option>
               <option value='10'>武汉VOD扩容项目</option>
               <option value='11'>县县通项目标准化版本规划</option>
@@ -134,7 +136,7 @@
               <option value='89'>江西有线DVB+OTT项目</option>
               <option value='90'>张家港本地信息平台项目</option>
               <option value='91'>宜兴端到端项目</option>
-              <option value='92'>张家港家庭信息化“智慧社区”互动电视后台管理系统(BO)</option>
+              <!--<option value='92'>张家港家庭信息化“智慧社区”互动电视后台管理系统(BO)</option>-->
               <option value='94'>贵州100路时移扩容项目</option>
               <option value='95'>部门事务与管理</option>
               <option value='160'>吉视传媒VOD后台管理系统扩容项目</option>
@@ -568,39 +570,41 @@
             </select>
           </div>
         </div>
-        <div class="itemContainer">
-            <div class="labelContainer">工作时长</div>
-            <div><input id="workhours" type="text" style="width:352px;display:block"/></div>
-        </div>
-        <div class="itemContainer">
-            <div class="labelContainer">工作内容</div>
-            <div><input id="workContent" type="text" style="width:352px;display:block"/></div>
-        </div>
-        <div class="itemContainer">
+          <div class="itemContainer">
             <div class="labelContainer">日期</div>
-            <div><input id="currentDate" name="date" type="text" style="width:352px;display:block"/></div>
-        </div>
-        <div class="itemContainer">
+            <div><input id="currentDate" name="date" type="text"/></div>
+          </div>
+          <div class="itemContainer">
+            <div class="labelContainer">工作时长</div>
+            <div><input id="workhours" type="text"/></div>
+          </div>
+          <div class="itemContainer">
+            <div class="labelContainer">工作内容</div>
+            <div><input id="workContent" type="text"/></div>
+          </div>
+          <div class="itemContainer">
             <div class="labelContainer">频率</div>
             <div>
-                <select class="selectZentao" disabled="disabled" style="width:370px;display:block">
-                    <option>一次</option>
-                    <option>每工作日</option>
+                <select id="submitFrequency" class="selectZentao">
+                    <option value="once">一次</option>
+                    <!--<option value="workday">每工作日</option>-->
+                    <option value="workdayAndSchoolday">每工作日+学习日</option>
                 </select>
             </div>
-        </div>
-        <div class="itemContainer">
+          </div>
+          <div class="itemContainer">
             <div class="labelContainer">用户名</div>
-            <div><input id="username" name="username" type="text" style="width:352px;display:block"/></div>
-        </div>
-        <div class="itemContainer">
+            <div><input id="username" name="username" type="text"/></div>
+          </div>
+          <div class="itemContainer">
             <div class="labelContainer">密码</div>
-            <div><input id="password" name="password" type="password" style="width:352px;display:block"/></div>
-        </div>
-        <div id="submitContainer" class="itemContainer">
+            <div><input id="password" name="password" type="password"/></div>
+          </div>
+          <div id="submitContainer" class="itemContainer">
             <input id="submitButton" type="button" value="提交" onclick="" />
+          </div>
         </div>
+      </form>
     </div>
-    </form>
 </body>
 </html>

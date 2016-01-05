@@ -139,6 +139,28 @@ CREATE TABLE IF NOT EXISTS `t_user` (
   PRIMARY KEY (`F_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS `t_zentaodiary`;
+CREATE TABLE `t_zentaodiary` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(50) NOT NULL,
+	`password` VARCHAR(50) NOT NULL,
+	`department` VARCHAR(50) NOT NULL,
+	`worktype` VARCHAR(50) NOT NULL,
+    `project` VARCHAR(50) NOT NULL,
+    `startdate` DATE NOT NULL,
+	`workhours` INT(11) NOT NULL DEFAULT 8,
+	`content` VARCHAR(200) NOT NULL DEFAULT "",
+	`frequence` VARCHAR(200) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+
+
 -- 数据导出被取消选择。
 
 

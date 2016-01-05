@@ -17,6 +17,25 @@
 $(document).ready(function () {
     $("#currentDate").val(new Date().Format("yyyy-MM-dd"));
     $("#workhours").val("8");
+    //alert("height:" + $("html").height() + ", width:" + $("html").width());
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        $(".container").width("85%");
+        var font_size = $(".container").width() / 22;
+        $("body").css("font-size", font_size);
+        //alert(navigator.userAgent);
+        //苹果端
+    } else if (/(Android)/i.test(navigator.userAgent)) {
+        $(".container").width("85%");
+        var font_size = $(".container").width() / 22;
+        $("body").css("font-size", font_size);
+        //alert(navigator.userAgent); 
+        //安卓端
+    } else {
+        $(".container").width("370");
+        $("body").css("font-size", "16px");
+        //alert("PC: " + navigator.userAgent);
+        //pc端
+    };
 });
 
 function sumbitDiary()
@@ -29,12 +48,13 @@ function sumbitDiary()
             requestType: "submitDiary",
             account: $("#username").val(),
             password: $("#password").val(),
+            frequency: $("#submitFrequency").val(),
             lang: "zh-cn",
             department: $("#selectDepartment").val(),
             worktype: $("#selectWorkType").val(),
             project: $("#selectProject").val(),
-            workhours: $("#workhours").val(),
             date: $("#currentDate").val(),
+            workhours: $("#workhours").val(),
             content: $("#workContent").val()
         },        
         success: function (data) {
@@ -46,6 +66,12 @@ function sumbitDiary()
             }
             else if(data.result == "submit_succeed") {
                 alert("提交成功！");
+            }
+            else if (data.result == "addtask_succeed") {
+                alert("添加任务成功！");
+            }
+            else if (data.result == "addtask_failed") {
+                alert("添加任务失败！");
             }
             else {
                 alert("未知错误！");

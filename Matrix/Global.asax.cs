@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Matrix.DataEntity;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Security;
 using System.Web.SessionState;
 
@@ -10,10 +14,33 @@ namespace Matrix
 {
     public class Global : System.Web.HttpApplication
     {
+        public void AddTask(int seconds, Action todo)
+        {
+            HttpRuntime.Cache.Insert(
+                Guid.NewGuid().ToString(),
+                0,
+                null,
+                DateTime.Now.AddSeconds(seconds),
+                Cache.NoSlidingExpiration,
+                CacheItemPriority.NotRemovable,
+                (key, value, reason) =>
+                {
+                    todo.Invoke();
+                    AddTask(seconds, todo);
+                });
+        }
+
+        public void SubmitDiary()
+        {
+            //object id = MariaDBHelper.ExecuteScalar(
+            //    "select username, password, department, worktype, startdate, workhours, content, frequency from t_zentaodiary;",
+            //    CommandType.Text);
+            //return;
+        }
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            AddTask(43200, SubmitDiary);
         }
 
         protected void Session_Start(object sender, EventArgs e)

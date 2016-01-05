@@ -1,5 +1,25 @@
-﻿body {
+﻿html{
+  height:100%;
+  width:100%;
+}
+
+body {
+  height:96%;
+  width:100%;
+  margin:0;
+  padding:0;
   font-family: "Segoe UI", "Microsoft Yahei UI","Microsoft Yahei",Verdana,Simsun,"Segoe UI Web Regular", Arial,sans-serif;
+  
+  color:#454545;
+}
+
+.container{
+  margin:3% auto;
+  height:91%;
+}
+
+.captain{
+  font-size:350%;
 }
 
 .itemContainer{
@@ -15,10 +35,19 @@
 input[type="text"],
 input[type="password"],
 select{
-  padding: 3px 6px;
+  padding: 1% 2%;
   font-family: "Segoe UI", "Microsoft Yahei UI","Microsoft Yahei",Verdana,Simsun,"Segoe UI Web Regular", Arial,sans-serif;
   font-size: 100%;
-  color: #212121;
+  color: #212121;  
+}
+
+input[type="text"],
+input[type="password"]{
+  width:95%;
+}
+
+select{
+  width:100%;
 }
 
 input[type=button],
@@ -28,9 +57,10 @@ button {
   min-width: 6em;
   font-family: "Microsoft Yahei UI","Microsoft Yahei",Verdana,Simsun,"Segoe UI Semibold","Segoe UI Web Semibold","Segoe UI Web Regular","Segoe UI","Segoe UI Symbol","HelveticaNeue-Medium","Helvetica Neue",Arial,sans-serif;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 92%;
   background-color: #E06000;
   color: #FFF;
+  margin:10px auto;
   padding: 3px 12px 5px;
   border: 0;
 }
