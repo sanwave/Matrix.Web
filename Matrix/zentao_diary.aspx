@@ -588,7 +588,7 @@
                 <select id="submitFrequency" class="selectZentao">
                     <option value="once">一次</option>
                     <!--<option value="workday">每工作日</option>-->
-                    <option value="workdayAndSchoolday">每工作日+学习日</option>
+                    <option value="workdayAndSchoolday">每工作日+学习日(开发中)</option>
                 </select>
             </div>
           </div>

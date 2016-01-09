@@ -28,6 +28,10 @@ $(document).ready(function () {
         $(".container").width("85%");
         var font_size = $(".container").width() / 22;
         $("body").css("font-size", font_size);
+        $(".labelContainer").css("line-height", "150%");
+        $("#submitButton").css("font-size", "158%");
+        $("#submitButton").css("height", "2.0em");
+        $("#submitButton").css("min-width", "7.4em");
         //alert(navigator.userAgent); 
         //安卓端
     } else {
