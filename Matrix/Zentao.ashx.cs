@@ -25,31 +25,34 @@ namespace Matrix
             string currentUsername = context.User.Identity.Name;
 
             string requestType = SqlHelper.GetString(context.Request["RequestType"]);
-            string account = SqlHelper.GetString(context.Request["account"]);
-            string password = SqlHelper.GetString(context.Request["password"]);
-            string frequency= SqlHelper.GetString(context.Request["frequency"]);
-            string lang=SqlHelper.GetString(context.Request["lang"]);
-            string department = SqlHelper.GetString(context.Request["department"]);
-            string worktype = SqlHelper.GetString(context.Request["worktype"]);
-            string project = SqlHelper.GetString(context.Request["project"]);
-            string startdate = SqlHelper.GetString(context.Request["date"]);
-            string workhours = SqlHelper.GetString(context.Request["workhours"]);
-            string content = SqlHelper.GetString(context.Request["content"]);
-            content = System.Web.HttpUtility.UrlEncode(content);
+            string UserName = SqlHelper.GetString(context.Request["account"]);
+            string Password = SqlHelper.GetString(context.Request["password"]);
+            string Frequency= SqlHelper.GetString(context.Request["frequency"]);
+            string Lang=SqlHelper.GetString(context.Request["lang"]);
+            string Department = SqlHelper.GetString(context.Request["department"]);
+            string WorkType = SqlHelper.GetString(context.Request["worktype"]);
+            string Project = SqlHelper.GetString(context.Request["project"]);
+            string StartDate = SqlHelper.GetString(context.Request["date"]);
+            string WorkHours = SqlHelper.GetString(context.Request["workhours"]);
+            string Content = SqlHelper.GetString(context.Request["content"]);
+            Content = System.Web.HttpUtility.UrlEncode(Content);
             string ip;
             if (context.Request.ServerVariables["HTTP_VIA"] != null) // using proxy
                 ip = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString();
             else
                 ip = context.Request.ServerVariables["REMOTE_ADDR"].ToString();
 
+            Matrix.Model.ZentaoDiaryTask DiaryTask;
+            DiaryTask = new Model.ZentaoDiaryTask(UserName, Password, Department, WorkType, Project, Convert.ToDateTime(StartDate), Convert.ToInt32(WorkHours), Content, Frequency, DateTime.Now);
+
             string response = "";
-            if (frequency.Equals("once",StringComparison.CurrentCultureIgnoreCase))
+            if (DiaryTask.Frequency.Equals("once",StringComparison.CurrentCultureIgnoreCase))
             {
-                response = SubmitDiary(account, password, lang, department, worktype, project, startdate, workhours, content);
+                response = SubmitDiary(DiaryTask, Lang);
             }
-            else if (frequency.Equals("workdayAndSchoolday", StringComparison.CurrentCultureIgnoreCase))
+            else if (DiaryTask.Frequency.Equals("workdayAndSchoolday", StringComparison.CurrentCultureIgnoreCase))
             {
-                int ret = AddSubmitDiaryTask(account, password, lang, department, worktype, project, startdate, workhours, content, frequency);
+                int ret = AddSubmitDiaryTask(DiaryTask);
                 if (1 == ret)
                 {
                     response = "addtask_succeed";
@@ -69,24 +72,22 @@ namespace Matrix
             context.Response.Write(jss.Serialize(result));
         }
 
-        public static int AddSubmitDiaryTask(string account, string password, string lang, string department,
-            string worktype, string project, string startdate, string workhours, string content, string frequency)
+        public static int AddSubmitDiaryTask(Matrix.Model.ZentaoDiaryTask diaryTask)
         {
             string sqlcmd = string.Format(
-                    "insert into t_zentaodiary(username, password, department, worktype, startdate, workhours, content, frequency) values ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7});",
-                    account, password, department, worktype, startdate, workhours, content, frequency);
+                    "insert into t_zentaodiary(username, password, department, worktype, project, startdate, workhours, content, frequency, updatetime) values ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}');",
+                    diaryTask.UserName, diaryTask.Password, diaryTask.Department, diaryTask.WorkType, diaryTask.Project, diaryTask.StartDate, diaryTask.WorkHours, diaryTask.Content, diaryTask.Frequency, DateTime.Now);
             int id = MariaDBHelper.ExecuteNonQuery(
                 sqlcmd,
                 CommandType.Text);
             return id;
         }
 
-        public static string SubmitDiary(string account, string password, string lang, string department,
-            string worktype, string project, string date, string workhours, string content)
+        public static string SubmitDiary(Matrix.Model.ZentaoDiaryTask diaryTask, string lang)
         {
             string requestBody = "";
-            requestBody += "account=" + account + "&";
-            requestBody += "password=" + password + "&";
+            requestBody += "account=" + diaryTask.UserName + "&";
+            requestBody += "password=" + diaryTask.Password + "&";
             requestBody += "lang=" + lang + "&";
             requestBody += "keepLogin[]=on";
             HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create("http://zentao.coship.com:88/zentao/user-login.html");
@@ -113,9 +114,9 @@ namespace Matrix
                 return "login_error";
             }
 
-            requestBody = "department[]=" + department + "&currentDate=" + date +
-                "&worktype[]=" + worktype + "&product[]=" + project + "&time[]=" + workhours +
-                "&description[]=" + content + "&bugs=&tasks=&mailto=";
+            requestBody = "department[]=" + diaryTask.Department + "&currentDate=" + diaryTask.StartDate.ToString("yyyy-MM-dd") +
+                "&worktype[]=" + diaryTask.WorkType + "&product[]=" + diaryTask.Project + "&time[]=" + diaryTask.WorkHours +
+                "&description[]=" + diaryTask.Content + "&bugs=&tasks=&mailto=";
             httpRequest = (HttpWebRequest)WebRequest.Create("http://zentao.coship.com:88/zentao/diary-create.html");
             httpRequest.Method = "POST";
             httpRequest.ContentType = "application/x-www-form-urlencoded";

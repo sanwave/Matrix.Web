@@ -32,10 +32,45 @@ namespace Matrix
 
         public void SubmitDiary()
         {
-            //object id = MariaDBHelper.ExecuteScalar(
-            //    "select username, password, department, worktype, startdate, workhours, content, frequency from t_zentaodiary;",
-            //    CommandType.Text);
-            //return;
+            Matrix.Model.ZentaoDiaryTask DiaryTask=new Model.ZentaoDiaryTask();
+            MariaDBHelper.ExecuteReader(
+                "select username, password, department, worktype, project, startdate, workhours, content, frequency, updatetime from t_zentaodiary;"+
+                "update t_zentaodiary set updatetime='"+DateTime.Now.ToString()+"';",
+                CommandType.Text,
+                (MySqlDataReader dataReader) =>
+                {
+                    while (dataReader.Read())
+                    {
+                        DiaryTask = new Model.ZentaoDiaryTask
+                        {
+                            UserName = MariaDBHelper.GetData(dataReader, "username"),
+                            Password = MariaDBHelper.GetData(dataReader, "password"),
+                            Department = MariaDBHelper.GetData(dataReader, "department"),
+                            WorkType = MariaDBHelper.GetData(dataReader, "worktype"),
+                            Project = MariaDBHelper.GetData(dataReader, "project"),
+                            StartDate = Convert.ToDateTime(MariaDBHelper.GetData(dataReader, "startdate")),
+                            WorkHours = Convert.ToInt32(MariaDBHelper.GetData(dataReader, "workhours")),
+                            Content = MariaDBHelper.GetData(dataReader, "content"),
+                            Frequency = MariaDBHelper.GetData(dataReader, "frequency"),
+                            UpdateTime= Convert.ToDateTime(MariaDBHelper.GetData(dataReader, "updatetime"))
+                        };
+                    }
+
+                    if (DiaryTask.UpdateTime.Date < DateTime.Now.Date && !string.IsNullOrEmpty(DiaryTask.UserName))
+                    {
+                        Zentao.SubmitDiary(DiaryTask, "zh-cn");
+                    }
+                }
+                );
+
+
+            
+            return;
+        }
+
+        public static void SendDiaryToZentaoServer()
+        {
+
         }
 
         protected void Application_Start(object sender, EventArgs e)

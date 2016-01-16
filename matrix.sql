@@ -151,7 +151,8 @@ CREATE TABLE `t_zentaodiary` (
     `startdate` DATE NOT NULL,
 	`workhours` INT(11) NOT NULL DEFAULT 8,
 	`content` VARCHAR(200) NOT NULL DEFAULT "",
-	`frequence` VARCHAR(200) NOT NULL,
+	`frequency` VARCHAR(200) NOT NULL,
+	`updatetime` DATETIME NOT NULL,
 	PRIMARY KEY (`id`)
 )
 COLLATE='utf8_general_ci'
