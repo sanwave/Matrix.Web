@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Web", "Matrix\Matrix.Web.csproj", "{502B6120-9788-4BAC-B9BB-D6C2776D26D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Web", "Matrix.Web\Matrix.Web.csproj", "{502B6120-9788-4BAC-B9BB-D6C2776D26D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Bussiness", "Matrix.Bussiness\Matrix.Bussiness.csproj", "{1B040010-B8F1-4929-85F5-92A478D1DA6A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.DataEntity", "Matrix.DataEntity\Matrix.DataEntity.csproj", "{F18D6A79-C9FD-4BAE-9C09-7E6ECB4AF56E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.Model", "Matrix.Model\Matrix.Model.csproj", "{5EB3074B-477E-4A41-BCA3-A84C75272E44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix.CS", "Matrix.CS\Matrix.CS.csproj", "{1B040010-B8F1-4929-85F5-92A478D1DA6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +21,6 @@ Global
 		{1B040010-B8F1-4929-85F5-92A478D1DA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B040010-B8F1-4929-85F5-92A478D1DA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B040010-B8F1-4929-85F5-92A478D1DA6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F18D6A79-C9FD-4BAE-9C09-7E6ECB4AF56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F18D6A79-C9FD-4BAE-9C09-7E6ECB4AF56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F18D6A79-C9FD-4BAE-9C09-7E6ECB4AF56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F18D6A79-C9FD-4BAE-9C09-7E6ECB4AF56E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EB3074B-477E-4A41-BCA3-A84C75272E44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EB3074B-477E-4A41-BCA3-A84C75272E44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EB3074B-477E-4A41-BCA3-A84C75272E44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EB3074B-477E-4A41-BCA3-A84C75272E44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
