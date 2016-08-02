@@ -141,7 +141,9 @@ div#container{
 }
 .main
 {
-    width:900px;
+    width:100%;
+    min-width:600px;
+    max-width:900px;
     margin:0px auto 0px auto;
 }
 .commonMain_bg

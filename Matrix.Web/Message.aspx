@@ -14,18 +14,24 @@
     <link href="Styles/Message.css" rel="stylesheet" type="text/css" />
     <link href="Styles/Tile.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="Resource/Icons/wave.ico" />
-	<script type="text/javascript" src="Scripts/jquery-1.10.1.min.js"></script>
+	<!--<script type="text/javascript" src="Scripts/jquery-1.10.1.min.js"></script>-->
     <script type="text/javascript" src="Scripts/Config.js"></script>
     <script type="text/javascript" src="Scripts/Common.js"></script>
     <script type="text/javascript" src="Scripts/User.js"></script>
     <script type="text/javascript" src="Scripts/Message.js"></script>
     <script type="text/javascript" src="Scripts/Resource.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
     <script type="text/javascript" lang="ja" language="javascript">
         $(document).ready(function () {            
             loadMessage(1);
-            loadMsgTile();
+            $("#datePicker").datepicker();
             $("#wordRestrainNum").html(messageRestrain);
-            addFileDragListener("messageBox", "Message");
+            //addFileDragListener("messageBox", "Message");
+            updateTime();
         });
     </script>
 </head>
@@ -38,7 +44,7 @@
 
 			    <div class="messageMain">
                     <div class="messageTop noSelect">
-				        <div class="mainTitle messageTitle">白板</div>
+				        <div class="mainTitle messageTitle">Script</div>
                         <div id="wordRestrain" class="wordRestrain">
                             您还能输入<var id="wordRestrainNum"></var>字
                         </div>
@@ -57,14 +63,22 @@
                         <div id="messageAttachmentBox"></div>
                     </div>
 
-                    <div class="msgCountBox noSelect">微言消息已有<e id="msgCount"></e>条</div>
+                    <!--<div class="msgCountBox noSelect">微言消息已有<e id="msgCount"></e>条</div>-->
 
                     <div id="messagesBox" class="messagesBox">
                     </div>
                 </div>
 
-			    <div class="rightMain noSelect">
+			    <div class="rightMain">
                     <div class="tile">
+                        <div id="timeStringBox" class="noSelect"></div>
+                        <div><div class="noSelect" style="float:left;margin-right:58px;line-height:19px">Unix时间戳：</div><div id="unixTimeBox"></div></div>
+                    </div>
+                    <div class="tile noSelect">
+                        <div id="datePicker"></div>
+                    </div>
+
+                    <div class="tile hidden">
                         <div id="introTitle" class="tileTitle">本站简介</div>
                         <div id="introBox" class="tileContent"> 
                         

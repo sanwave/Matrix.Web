@@ -1,23 +1,55 @@
-﻿<div class="top">    
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>发现</title>
+	<meta charset="utf-8" />
+    <meta name="keywords" content="Matrix,Discover" />
+    <meta name="description" content="" />
+    <link href="Styles/Common.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Menu.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .topMenu_bg{
+            height:54px;
+        }
+        .topMenu{
+            width:1050px;
+            height:54px;
+        }
+        .topMenu a,
+        .topMenu a:hover,
+        .topMenu a.hover {
+            color: #FFF;
+            display: block;
+            font-size: 15.2px;
+            padding: 0px 31px;
+            line-height: 54px;
+        }
+        .topMenu_bg {
+            background: #E23200;
+        }
+        .topMenu a:hover, .topMenu a.hover {
+            background: #C51F00;
+        }
+    </style>
+    <link rel="shortcut icon" href="Resource/Icons/wave.ico" />
+    <script type="text/javascript" src="Scripts/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" lang="ja" language="javascript">
         $(document).ready(function () {
-            if ("undefined" != typeof (getCookie("usernameForMatrix")) &&
-                getCookie("usernameForMatrix") != "") {
-                $("#navUser").css("display", "block");
-                $("#navUserName").html("<a>" + getCookie("usernameForMatrix") + "</a>");
-            }
-            else {
-                $("#navLoginBox").css("display", "block");
-            }
+
         });
     </script>
+</head>
+<body>
     <div class="topMenu_bg noSelect">
         <div class="topMenu">
             <div id="topMenu" class="ul">
-                <div id="navMatrix" class="navItem"><a id="navTitleText" class="noHover" href="/">Matrix</a></div>
+                <div id="navMatrix" class="navItem"><a class="noHover">Matrix</a></div>
                 <!--<div id="navHome" class="navItem"><a href="/Index.aspx">首页</a></div>-->
                 <div id="navMessage" class="navItem"><a href="/Message.aspx">白板</a></div>
-                <div id="navKod" class="navItem"><a href="http://localhost:808">Kod</a></div>
+                <div id="navDiscover" class="navItem"><a href="/Discover.html">发现</a></div>
+                <div id="navGoogle" class="navItem hidden"><a href="https://google-imatrix.rhcloud.com">Google</a></div>
+                <div id="navKod" class="navItem hidden"><a href="http://localhost:808">Kod</a></div>
                 <div id="navFind" class="navItem hidden"><a href="/Search.aspx">查找</a></div>
                 <div id="navDevelop" class="navItem hidden"><a href="/Develop.aspx">开发</a></div>
                 <div id="navDownload" class="navItem hidden"><a href="/Download.aspx">下载</a></div>
@@ -25,7 +57,7 @@
                 <div id="navCalendar" class="navItem hidden"><a href="/Calendar.aspx">日历</a></div>
                 <div id="navMusic" class="navItem hidden"><a href="/Music.aspx">音乐</a></div>
                 <div id="navVideo" class="navItem hidden"><a href="/Video.aspx">视频</a></div>
-                <div id="navTools" class="navItem hidden"><a href="/Develop.aspx">工具</a></div>
+                <div id="navTools" class="navItem"><a href="/Develop.aspx">工具</a></div>
                 <!--<div id="navEdit" class="navItem"><a href="http://skydrive.com">编辑</a></div>-->
                 <div id="navDemo" class="navItem hidden"><a href="/Demo.aspx">Demo</a></div>
                 <div id="navAbout" class="navItem hidden"><a href="Recognize.aspx">Recognize</a></div>
@@ -47,4 +79,5 @@
             </div>
         </div>
     </div>
-</div>
+</body>
+</html>

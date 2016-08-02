@@ -237,3 +237,24 @@ $(function () {
     });
 
 })
+
+function updateTime() {
+    var now = new Date()
+    var h = now.getHours()
+    var m = now.getMinutes()
+    var s = now.getSeconds()
+    var unitTime = now.getTime() / 1000;
+    // add a zero in front of numbers<10
+    m = checkTime(m)
+    s = checkTime(s)
+    $("#timeStringBox").html(h + ":" + m + ":" + s);
+    if ($("#unixTimeBox").html() == "")
+        $("#unixTimeBox").html(parseInt(unitTime));
+    t = setTimeout('updateTime()', 500)
+}
+
+function checkTime(i) {
+    if (i < 10)
+    { i = "0" + i }
+    return i
+}

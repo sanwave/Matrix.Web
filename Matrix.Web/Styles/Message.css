@@ -28,9 +28,11 @@ a.noHover:hover
 }
 .messageTitle
 {
+    font-family:'Chaparral Pro Light';
     position:absolute;
     bottom:0px;
     left:0px;
+    font-style:oblique;
 }
 .wordRestrain
 {
