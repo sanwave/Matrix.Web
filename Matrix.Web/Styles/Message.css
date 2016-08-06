@@ -26,18 +26,18 @@ a.noHover:hover
     width:474px;
     height:85px;
 }
-.messageTitle
+.messageTitle 
 {
-    font-family:'Chaparral Pro Light';
-    position:absolute;
-    bottom:0px;
-    left:0px;
-    font-style:oblique;
+    font-family: 'Chaparral Pro Light', Cambria,Andalus,'Calisto MT',Gabriola;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    font-style: oblique;
 }
 .wordRestrain
 {
     position:absolute;
-    bottom:0px;
+    bottom:10px;
     right:0px;
     font-size:14px;
 }
@@ -50,13 +50,11 @@ a.noHover:hover
 .messageBox_bg
 {
     width:474px;
-    margin-top:10px;
 }
 #messageBox
 {
     height:74px;
     width:460px;
-    /*_width:470px;*/
 }
 
 .seperator

@@ -1,6 +1,6 @@
 .rightMain
 {
-    width:291px;
+    width:281px;
     float:right;
     margin:30px 10px 30px 20px;
 }
@@ -52,17 +52,16 @@
     border:#EE9A00 solid 2px;
 }
 
-#timeStringBox{
-    font-family:'Chaparral Pro Light',Candara,"Segoe UI";
-    font-size:72px;
+#timeStringBox 
+{
+    font-family: 'Chaparral Pro Light', Candara, "Segoe UI", Corbel;
+    font-size: 72px;
+    text-align: center;
 }
 
-#unixTimeBox{
+#unixTimeBox
+{
     font-family:'Chaparral Pro Light',Candara,"Segoe UI";
     font-size:20px;
     float:left;
-}
-
-element.style{
-    margin:auto;
 }
