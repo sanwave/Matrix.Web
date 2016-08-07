@@ -52,17 +52,15 @@ function make_msgblock_html(item) {
     buff += "<div class=\"msgReact noSelect\">";
     buff += "<div class=\"msgPostTime\">" + item.postTime + "</div>";
     buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'support'," +
-        item.id + ")\">支持(<e>" + item.support + "</e>)</div>";
+        item.id + ")\">喜欢(<e>" + item.support + "</e>)</div>";
     buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'oppose'," +
-        item.id + ")\">反对(<e>" + item.oppose + "</e>)</div>";
-
-    buff += "<div class=\"msgButton\" onclick=\"removeMessage(this," +
-        item.id + ")\">移除</div>";
-
+        item.id + ")\">反感(<e>" + item.oppose + "</e>)</div>";
     buff += "<div class=\"msgButton showReplyButton\" onclick=\"showReplyMsgBox(this, " +
-        item.id + ")\"\">评论(<e>" + item.replyNum + "</e>)</div>";
-    buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'report'," +
-        item.id + ")\">举报(<e>" + item.report + "</e>)</div>";
+        item.id + ")\"\">回复"/*"(<e>" + item.replyNum + "</e>)"*/+"</div>";
+    buff += "<div class=\"msgButton\" onclick=\"removeMessage(this," +
+        item.id + ")\">&nbsp;</div>";
+    //buff += "<div class=\"msgButton\" onclick=\"reactMessage(this,'report'," +
+    //    item.id + ")\">举报(<e>" + item.report + "</e>)</div>";
     buff += "</div>";
     buff += "<div class=\"clearBoth\"></div>";
     return buff;
@@ -245,6 +243,7 @@ function updateTime() {
     var s = now.getSeconds()
     var unitTime = now.getTime() / 1000;
     // add a zero in front of numbers<10
+    h = checkTime(h);
     m = checkTime(m)
     s = checkTime(s)
     $("#timeStringBox").html(h + ":" + m + ":" + s);
